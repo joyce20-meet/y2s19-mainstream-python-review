@@ -8,13 +8,37 @@ NUMBERS_TO_LETTERS = {0:'a', 1:'b', 2:'c', 3:'d', 4:'e', 5:'f', 6:'g', 7:'h', 8:
 					  23: 'x', 24: 'y', 25: 'z'}
 
 def createShiftDictionary(s):
-	pass
+        shift_dictionary={}
+        for i in LETTERS_TO_NUMBERS:
+                A = LETTERS_TO_NUMBERS[i]
+                B = A + s
+                if B > 25:
+                     B =   B % 26
+                C = NUMBERS_TO_LETTERS[B]
+                shift_dictionary[i] = C
+        return shift_dictionary
+#function = createShiftDictionary(3)
+#print(function)
+	
 
 def encode(plaintext, s):
-	pass
+        newDictionary = createShiftDictionary(s)
+        result =""
+        for i in plaintext:
+                if newDictionary.get(i) == None:
+                        result = result +i
+                else:
+                        result = result+ newDictionary[i]
+                                
+                
+        return result     
+a = encode("free",1)
+b = encode(" arnold ",2)
+print (a)
+print(b)
 
 def decode(ciphertext, s):
-	pass
+        pass
 
 def decodeAll(ciphertext):
-	pass
+        pass
